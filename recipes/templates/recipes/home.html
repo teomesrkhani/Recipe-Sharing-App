@@ -1,0 +1,17 @@
+{% extends "recipes/base.html" %}
+<!-- -->
+{% block content %}
+<h1 class="text-4xl font-bold mb-4">Recipes:</h1>
+{% for recipe in recipes %}
+<div class="bg-white shadow-md rounded-lg p-4 mb-4">
+  <h2 class="text-xl font-bold mb-2">{{ recipe.title }}</h2>
+  <h3 class="text-sm text-gray-600 mb-2">{{ recipe.author }}</h3>
+  <p class="text-gray-800">{{ recipe.description }}</p>
+  <h3 class="text-sm text-gray-600 mt-2">
+    {{ recipe.updated_at|date:"F d, Y" }}
+  </h3>
+  <a href="{% url 'recipes-detail' recipe.pk %}" class="text-blue-500 mt-2 block">View Recipe</a>
+</div>
+{% endfor %}
+<!-- -->
+{% endblock content %}
